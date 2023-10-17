@@ -184,24 +184,24 @@ const books = [
     image: './books-images/unknown.jpg'
   }
 ]
- // Function to filter and sort books
- function filterAndSortBooks() {
+// Function to filter and sort books
+function filterAndSortBooks() {
   const genre = document.getElementById('genre-select').value;
   const sort = document.getElementById('sort-select').value;
 
   // Filter books based on selected genre
   let filteredBooks = books;
   if (genre !== 'All') {
-    filteredBooks = filteredBooks.filter(book => book.genre === genre);
+      filteredBooks = filteredBooks.filter(book => book.genre === genre);
   }
 
   // Sort books based on selected sort order
   filteredBooks.sort((a, b) => {
-    if (sort === 'asc') {
-      return a.rating - b.rating;
-    } else {
-      return b.rating - a.rating;
-    }
+      if (sort === 'asc') {
+          return a.rating - b.rating;
+      } else {
+          return b.rating - a.rating;
+      }
   });
 
   // Display the filtered and sorted books
@@ -214,34 +214,29 @@ function displayBooks(books) {
   container.innerHTML = '';
 
   books.forEach(book => {
-    const card = document.createElement('div');
-    card.className = 'book-card';
+      const card = document.createElement('div');
+      card.className = 'book-card';
 
-    const title = document.createElement('h3');
-    title.innerText = book.title;
-    card.appendChild(title);
+      const title = document.createElement('h3');
+      title.innerText = book.title;
+      card.appendChild(title);
 
-    const image = document.createElement('img');
-    image.src = book.image;
-    card.appendChild(image);
+      const image = document.createElement('img');
+      image.src = book.image;
+      card.appendChild(image);
 
-    const author = document.createElement('h2');
-    author.innerText = 'By ' + book.author;
-    card.appendChild(author);
+      const author = document.createElement('h2');
+      author.innerText = 'By ' + book.author;
+      card.appendChild(author);
 
-    // const year = document.createElement('p');
-    // year.innerText = 'Published in ' + book.year;
-    // card.appendChild(year);
+      const rating = document.createElement('h1');
+      rating.innerText = 'Rating: ' + book.rating;
+      card.appendChild(rating);
 
-    const rating = document.createElement('h1');
-    rating.innerText = 'Rating: ' + book.rating;
-    card.appendChild(rating);
-
-    // const description = document.createElement('p');
-    // description.innerText = book.description;
-    // card.appendChild(description);
-
-    container.appendChild(card);
+      const description = document.createElement('h1');
+      description.innerText = 'Description: ' + book.description;
+      card.appendChild(description);
+      container.appendChild(card);
   });
 }
 
